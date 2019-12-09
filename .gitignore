@@ -55,5 +55,6 @@ flycheck_*.el
 # network security
 .vscode
 main.py
+*main.c
 
 # End of https://www.gitignore.io/api/emacs
