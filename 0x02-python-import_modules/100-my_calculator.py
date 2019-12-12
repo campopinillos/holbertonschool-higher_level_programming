@@ -11,7 +11,8 @@ if __name__ == "__main__":
     a = int(sys.argv[1])
     b = int(sys.argv[3])
     if operator in list(operation.keys()):
-        print("{} {} {} = {}".format(a, operator, b, operation[operator](a, b)))
+        print("{} {} {} = {}".format(a, operator, b,
+                                     operation[operator](a, b)))
     else:
         print("Unknown operator. Available operators: +, -, * and /")
         exit(1)
