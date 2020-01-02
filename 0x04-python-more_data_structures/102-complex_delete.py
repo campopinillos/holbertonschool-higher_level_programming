@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 def complex_delete(a_dictionary, value):
     while value in a_dictionary.values():
-        for key, val in a_dictionary.items():
-            if val == value:
-                del a_dictionary[key]
-                break
+        k = list(a_dictionary.keys())[list(a_dictionary.values()).index(value)]
+        if a_dictionary[k]:
+            del a_dictionary[k]
+            continue
     return a_dictionary
