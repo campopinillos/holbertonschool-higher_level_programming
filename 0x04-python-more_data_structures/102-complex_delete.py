@@ -4,5 +4,4 @@ def complex_delete(a_dictionary, value):
         k = list(a_dictionary.keys())[list(a_dictionary.values()).index(value)]
         if a_dictionary[k]:
             del a_dictionary[k]
-            continue
     return a_dictionary
