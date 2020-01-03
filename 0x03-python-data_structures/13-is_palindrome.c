@@ -10,11 +10,10 @@ int compare(listint_t *list_1, listint_t *list_2);
 int is_palindrome(listint_t **head)
 {
 	listint_t *sl, *fas, *prev_sl;
-	listint_t *scn_half, *middle;
+	listint_t *scn_half;
 	int palindrome = 1;
 
 	sl = fas = prev_sl = *head;
-	middle = NULL;
 	if (*head && (*head)->next)
 	{
 		while (fas && fas->next)
@@ -25,23 +24,12 @@ int is_palindrome(listint_t **head)
 		}
 
 		if (fas)
-		{
-			middle = sl;
 			sl = sl->next;
-		}
 
 		scn_half = sl;
 		prev_sl->next = NULL;
 		scn_half = reverse_listint(&scn_half);
 		palindrome = compare(*head, scn_half);
-
-		if (middle)
-		{
-			prev_sl->next = middle;
-			middle->next = scn_half;
-		}
-		else
-			prev_sl->next = scn_half;
 	}
 	return (palindrome);
 }
