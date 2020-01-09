@@ -52,11 +52,12 @@ flycheck_*.el
 # network security
 /network-security.data
 
-# network security
+# End of https://www.gitignore.io/api/emacs
+
+# Own files
 .vscode
 *main.py
 *main.c
 .DS_Store
 __pycache__
-# End of https://www.gitignore.io/api/emacs
-
+0x05-python-exceptions/103-test.py
