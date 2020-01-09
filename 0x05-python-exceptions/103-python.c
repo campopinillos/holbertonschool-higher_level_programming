@@ -66,17 +66,10 @@ void print_python_bytes(PyObject *p)
 	string = byte->ob_sval;
 	printf("  size: %lu\n", size);
 	printf("  trying string: %s\n", string);
-	if (size > 10)
-		size = 10;
-	else
-		size++;
+	size =  size + 1 > 10 ? 10 : size + 1;
 	printf("  first %lu bytes: ", size);
 	for (i = 0; i < size; i++)
-	{
-		printf("%02hhx", string[i]);
-		if (i + 1 < size)
-			printf(" ");
-	}
+		printf("%02hhx%s", str[i], i + 1 < len ? " " : "");
 	printf("\n");
 }
 /**
@@ -89,6 +82,7 @@ void print_python_float(PyObject *p)
 {
 	float f;
 
+	setbuf(stdout, NULL);
 	printf("[.] float object info\n");
 	if (!p || p->ob_type != &PyFloat_Type)
 	{
