@@ -86,11 +86,7 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	PyFloatObject *f = (PyFloatObject *)p;
-	PyVarObject *var = (PyVarObject *)p;
-	unsigned int i;
-	unsigned long size;
-	char *buffer;
+	/* PyFloatObject *f = (PyFloatObject *)p; */
 
 	printf("[.] float object info\n");
 	if (!p || p->ob_type != &PyFloat_Type)
