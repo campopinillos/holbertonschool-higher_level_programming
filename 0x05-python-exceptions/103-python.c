@@ -80,7 +80,7 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	float f;
+	double f;
 
 	setbuf(stdout, NULL);
 	printf("[.] float object info\n");
