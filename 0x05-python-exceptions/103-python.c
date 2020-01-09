@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <Python.h>
+#include <floatobject.h>
 void print_python_bytes(PyObject *p);
 void print_python_float(PyObject *p);
 /**
@@ -86,7 +87,7 @@ void print_python_bytes(PyObject *p)
  */
 void print_python_float(PyObject *p)
 {
-	/* PyFloatObject *f = (PyFloatObject *)p; */
+	float f;
 
 	printf("[.] float object info\n");
 	if (!p || p->ob_type != &PyFloat_Type)
@@ -94,5 +95,7 @@ void print_python_float(PyObject *p)
 		printf("  [ERROR] Invalid Float Object\n");
 		return;
 	}
+	f  = ((PyFloatObject *)p)->ob_fval;
+	printf("  value: %s\n",
+	PyOS_double_to_string(f, 'r', 0, Py_DTSF_ADD_DOT_0, NULL));
 }
-
