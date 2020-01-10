@@ -6,4 +6,4 @@ class Square:
         Args:
             size: Is the type int private attribute
         """
-        self.size = size
+        self.__size = size
