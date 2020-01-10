@@ -4,7 +4,7 @@ class MagicClass:
 
     def __init__(self, radious=0):
         self.__radious = radious
-        if (type(radious) is not int or
+        if (type(radious) is not int and
                 type(radious) is not float):
             raise TypeError('radius must be a number')
 
