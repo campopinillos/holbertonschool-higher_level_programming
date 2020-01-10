@@ -1,7 +1,8 @@
 #!/usr/bin/python3
-class MagicClass:
-    import math
+import math
 
+
+class MagicClass:
     def __init__(self, radious=0):
         self.__radious = radious
         if (type(radious) is not int and
