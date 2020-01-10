@@ -81,4 +81,6 @@ class Square:
                     print(' ', end='')
                 for j in range(self.__size):
                     print('#', end='')
-                print('')
+                if i != self.__size - 1:
+                    print('')
+        return('')
