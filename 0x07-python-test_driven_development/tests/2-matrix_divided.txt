@@ -38,6 +38,14 @@ Non square matrix
     >>> print(matrix_divided(matrix, 3))
     [[0.33, 1.0, 1.67]]
 
+Infinite float
+
+::
+
+    >>> matrix = [[1, 2, 3], [4, 5, 6]]
+    >>> print(matrix_divided(matrix, float(inf)))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 TypeError div is not int or float
 
 ::
@@ -68,3 +76,20 @@ TypeError matrix contains only a list
     TypeError: matrix must be a matrix (list of lists) of integers/floats
 
 
+TypeError matrix different size
+
+::
+
+    >>> matrix = [[1, 2, 3, 4], [5, 6, 7]]
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: Each row of the matrix must have the same size
+
+TypeError matrix empty list
+
+::
+
+    >>> matrix = []
+    >>> print(matrix_divided(matrix, 3))
+    Traceback (most recent call last):
+    TypeError: matrix must be a matrix (list of lists) of integers/floats

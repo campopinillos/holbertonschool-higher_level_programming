@@ -20,7 +20,7 @@ def matrix_divided(matrix, div):
         not isinstance(matrix, list) or
         not all(isinstance(row, list) for row in matrix) or
         not all(isinstance(x, (int, float))
-            for x in [num for row in matrix for num in row])):
+                for x in [num for row in matrix for num in row])):
         raise TypeError("matrix must be a matrix (list of lists) of "
                         "integers/floats")
 
