@@ -68,3 +68,19 @@ TypeError message of Booleans arguments declared
     >>> add_integer(1, True)
     Traceback (most recent call last):
     TypeError: b must be an integer
+
+OverflowError float
+
+::
+
+    >>> add_integer(4, float('inf'))
+    Traceback (most recent call last):
+    OverflowError: cannot convert float infinity to integer
+
+ValueError float NaN
+
+::
+
+    >>> add_integer(float('NaN'))
+    Traceback (most recent call last):
+    ValueError: cannot convert float NaN to integer
