@@ -41,7 +41,7 @@ NO TypeError num:
     >>> lazy_matrix_mul("H", [[2]])
     Traceback (most recent call last):
     ...
-    ValueError: Scalar operands are not allowed, use '*' instead
+    ValueError: malformed node or string: <_ast.Name object at 0x...>
 
 NO TypeError num:
 
@@ -49,7 +49,7 @@ NO TypeError num:
     >>> lazy_matrix_mul([[2]], "H")
     Traceback (most recent call last):
     ...
-    ValueError: Scalar operands are not allowed, use '*' instead
+    ValueError: malformed node or string: <_ast.Name object at 0x...>
 
 ValueError string:
 
@@ -113,9 +113,9 @@ ValueError no num:
     Traceback (most recent call last):
     ValueError: data type must provide an itemsize
 
-TypeError None:
+TypeError None None:
 
 ::
     >>> print(lazy_matrix_mul(None, None))
     Traceback (most recent call last):
-    TypeError: Object arrays are not currently supported
+    TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
