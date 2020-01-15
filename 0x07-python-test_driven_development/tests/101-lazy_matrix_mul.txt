@@ -38,14 +38,18 @@ No ValueError empty matrix m_b:
 NO TypeError num:
 
 ::
-    >>> lazy_matrix_mul(1, [[2]])
-    matrix([[2]])
+    >>> lazy_matrix_mul("H", [[2]])
+    Traceback (most recent call last):
+    ...
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 NO TypeError num:
 
 ::
-    >>> lazy_matrix_mul([[2]], 1)
-    matrix([[2]])
+    >>> lazy_matrix_mul([[2]], "H")
+    Traceback (most recent call last):
+    ...
+    ValueError: Scalar operands are not allowed, use '*' instead
 
 ValueError string:
 
@@ -108,3 +112,10 @@ ValueError no num:
     >>> lazy_matrix_mul([[1, '2'], [3, 4]], [[5, 6], [7, 8]])
     Traceback (most recent call last):
     ValueError: data type must provide an itemsize
+
+TypeError None:
+
+::
+    >>> print(lazy_matrix_mul(None, None))
+    Traceback (most recent call last):
+    TypeError: Object arrays are not currently supported
