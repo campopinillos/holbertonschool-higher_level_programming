@@ -36,7 +36,7 @@ if __name__ == "__main__":
     n = 0
     try:
         n = int(sys.argv[1])
-    except:
+    except ValueError:
         print("N must be a number")
         exit(1)
     if n < 4:
