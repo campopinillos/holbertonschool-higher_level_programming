@@ -16,5 +16,5 @@ def lazy_matrix_mul(m_a, m_b):
         ValueError
     Return: Matrix Product.
     """
-    result = np.matrix(m_a) * np.matrix(m_b)
+    result = np.matmul(m_a, m_b)
     return result

@@ -12,85 +12,117 @@ Function that multiplies 2 matrices.
 
     >>> lazy_matrix_mul = __import__('101-lazy_matrix_mul').lazy_matrix_mul
     >>> lazy_matrix_mul([[1, 2, 3], [4, 5, 6], [7, 8, 9]], [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-    matrix([[ 30,  36,  42],
-            [ 66,  81,  96],
-            [102, 126, 150]])
+    array([[ 30,  36,  42],
+           [ 66,  81,  96],
+           [102, 126, 150]])
 
 It works with simple case:
 
 ::
     >>> lazy_matrix_mul([[2]], [[3]])
-    matrix([[6]])
+    array([[6]])
 
 ValueError can't be multiplied shape:
 
 ::
     >>> lazy_matrix_mul([], [[2]])
     Traceback (most recent call last):
-    ValueError: shapes (1,0) and (1,1) not aligned: 0 (dim 1) != 1 (dim 0)
+    ValueError: shapes (0,) and (1,1) not aligned: 0 (dim 0) != 1 (dim 0)
 
-No ValueError empty matrix m_b:
+ValueError empty matrix m_b:
 
 ::
     >>> lazy_matrix_mul([[2]], [])
-    matrix([], shape=(1, 0), dtype=float64)
+    Traceback (most recent call last):
+    ValueError: shapes (1,1) and (0,) not aligned: 1 (dim 1) != 0 (dim 0)
 
-NO TypeError num:
+TypeError no num:
 
 ::
-    >>> lazy_matrix_mul("H", [[2]])
+    >>> lazy_matrix_mul({1, 2}, [[2]])
     Traceback (most recent call last):
-    ...
-    ValueError: malformed node or string: <_ast.Name object at 0x...>
+    TypeError: Object arrays are not currently supported
 
-NO TypeError num:
+TypeError no num:
 
 ::
-    >>> lazy_matrix_mul([[2]], "H")
+    >>> lazy_matrix_mul([[2]], {1, 2})
     Traceback (most recent call last):
-    ...
-    ValueError: malformed node or string: <_ast.Name object at 0x...>
+    TypeError: Object arrays are not currently supported
 
-ValueError string:
+ValueError String
+
+::
+    >>> lazy_matrix_mul([(1, 2), [2]], [[2]])
+    Traceback (most recent call last):
+    ValueError: setting an array element with a sequence.
+    
+
+ValueError String
+
+::
+    >>> lazy_matrix_mul([[2]], "1, 2")
+    Traceback (most recent call last):
+    ValueError: Scalar operands are not allowed, use '*' instead
+    
+
+TypeError string:
 
 ::
     >>> lazy_matrix_mul([["Hello"]], [[2]])
     Traceback (most recent call last):
-    ValueError: data type must provide an itemsize
+    TypeError: invalid data type for einsum
 
-ValueError string:
+TypeError string:
 
 ::
     >>> lazy_matrix_mul([[2]], [["Hello"]])
     Traceback (most recent call last):
-    ValueError: data type must provide an itemsize
+    TypeError: invalid data type for einsum
+
+None
+
+TypeError None:
+
+::
+    >>> lazy_matrix_mul(None, [[2]])
+    Traceback (most recent call last):
+    TypeError: Object arrays are not currently supported
+
+TypeError None:
+
+::
+    >>> lazy_matrix_mul([[2]], None)
+    Traceback (most recent call last):
+    TypeError: Object arrays are not currently supported
 
 ValueError matrix list of list:
 
 ::
     >>> lazy_matrix_mul([1, 2, 3], [[2]])
     Traceback (most recent call last):
-    ValueError: shapes (1,3) and (1,1) not aligned: 3 (dim 1) != 1 (dim 0)
+    ValueError: shapes (3,) and (1,1) not aligned: 3 (dim 0) != 1 (dim 0)
 
 No TypeError matrix list of list:
 
 ::
     >>> lazy_matrix_mul([[2]], [1, 2, 3])
-    matrix([[2, 4, 6]])
+    Traceback (most recent call last):
+    ValueError: shapes (1,1) and (3,) not aligned: 1 (dim 1) != 3 (dim 0)
 
 ValueError not same size:
 
 ::
     >>> lazy_matrix_mul([[1, 2], [3, 4, 5], [6, 7]], [[1, 2, 3], [4, 5, 6]])
     Traceback (most recent call last):
-    ValueError: shapes (1,3) and (2,3) not aligned: 3 (dim 1) != 2 (dim 0)
+    ValueError: setting an array element with a sequence.
 
 ValueError not same size:
 
 ::
     >>> lazy_matrix_mul([[1, 2], [3, 4], [6, 7]], [[1, 2, 3], [4, 5]])
     Traceback (most recent call last):
-    ValueError: shapes (3,2) and (1,2) not aligned: 2 (dim 1) != 1 (dim 0)
+    ValueError: setting an array element with a sequence.
 
 TypeError one missing argument:
 
@@ -109,13 +141,20 @@ TypeError missing both arguments:
 ValueError no num:
 
 ::
-    >>> lazy_matrix_mul([[1, '2'], [3, 4]], [[5, 6], [7, 8]])
+    >>> lazy_matrix_mul([[1, "2"], [3, 4]], [[5, 6], [7, 8]])
     Traceback (most recent call last):
-    ValueError: data type must provide an itemsize
+    TypeError: invalid data type for einsum
+
+ValueError no num:
+
+::
+    >>> lazy_matrix_mul([[1, 2], [3, 4]], [[5, "6"], [7, 8]])
+    Traceback (most recent call last):
+    TypeError: invalid data type for einsum
 
 TypeError None None:
 
 ::
     >>> print(lazy_matrix_mul(None, None))
     Traceback (most recent call last):
-    TypeError: unsupported operand type(s) for *: 'NoneType' and 'NoneType'
+    TypeError: Object arrays are not currently supported
