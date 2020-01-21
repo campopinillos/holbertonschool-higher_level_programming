@@ -1,0 +1,54 @@
+===============================
+7-base_geometry.py
+===============================
+
+Geometry module.
+
+=======
+
+Type class BaseGeometry
+
+::
+
+	>>> BaseGeometry = __import__('7-base_geometry').BaseGeometry
+	>>> bg = BaseGeometry()
+	>>> type(bg)
+	<class '7-base_geometry.BaseGeometry'>
+	>>> type(BaseGeometry.__dict__['area'])
+	<class 'function'>
+	>>> type(BaseGeometry.__dict__['integer_validator'])
+	<class 'function'>
+
+::
+
+	>>> bg.integer_validator("Hello", 1)
+
+::
+
+	>>> bg.area()
+	Traceback (most recent call last):	
+	Exception: area() is not implemented
+
+::
+
+	>>> bg.integer_validator("name", None)
+	Traceback (most recent call last):
+	TypeError: name must be an integer
+
+::
+
+	>>> bg.integer_validator("name", "None")
+	Traceback (most recent call last):
+	TypeError: name must be an integer
+
+::
+
+	>>> bg.integer_validator("name", 2.2)
+	Traceback (most recent call last):
+	TypeError: name must be an integer
+
+::
+
+	>>> bg.integer_validator("name", -2)
+	Traceback (most recent call last):
+	ValueError: name must be greater than 0
