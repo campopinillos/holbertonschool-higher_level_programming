@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Rectangle module
+Square module
 
 """
 Rectangle = __import__('9-rectangle').Rectangle
