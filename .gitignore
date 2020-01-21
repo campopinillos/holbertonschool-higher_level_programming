@@ -1,4 +1,3 @@
-
 # Created by https://www.gitignore.io/api/emacs
 # Edit at https://www.gitignore.io/?templates=emacs
 
@@ -62,3 +61,14 @@ flycheck_*.el
 __pycache__
 0x05-python-exceptions/103-test.py
 0x07-python-test_driven_development/102-tests.py
+0x0B-python-input_output/my_file_0.txt
+
+# Default ignored files
+.idea/workspace.xml
+.idea/holbertonschool-higher_level_programming.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/rGraphicsSettings.xml
+.idea/rSettings.xml
+.idea/vcs.xml
+.idea/inspectionProfiles/profiles_settings.xml
