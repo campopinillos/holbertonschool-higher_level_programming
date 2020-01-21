@@ -9,7 +9,7 @@ def read_lines(filename="", nb_lines=0):
             line_num += 1
         myfile.seek(0)
         if (line_num <= nb_lines) or (nb_lines <= 0):
-            print(myfile.read())
+            print(myfile.read(), end="")
         else:
             line_num = 0
             while line_num < nb_lines:
