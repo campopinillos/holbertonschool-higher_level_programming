@@ -62,6 +62,10 @@ __pycache__
 0x05-python-exceptions/103-test.py
 0x07-python-test_driven_development/102-tests.py
 0x0B-python-input_output/my_file_0.txt
+0x0B-python-input_output/10-main_2.py
+0x0B-python-input_output/10-my_class_2.py
+0x0B-python-input_output/10-my_class.py
+
 
 # Default ignored files
 .idea/workspace.xml
