@@ -5,8 +5,6 @@ def number_of_lines(filename=""):
     """
     with open(filename, encoding='utf-8') as myfile:
         line_num = 0
-        line = myfile.readline()
-        while line:
-            line = myfile.readline()
+        for line in myfile:
             line_num += 1
         return line_num
