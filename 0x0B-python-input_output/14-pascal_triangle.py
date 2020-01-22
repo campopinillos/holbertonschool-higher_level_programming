@@ -3,7 +3,7 @@ def pascal_triangle(n):
     """
     Pascal triangle
     """
-    pascal_list = [[]] if n == 0 else [[1]]
+    pascal_list = [[1]] if n > 0 else []
     for i in range(1, n):
         row = list(range(i + 1))
         for j in range(i + 1):
