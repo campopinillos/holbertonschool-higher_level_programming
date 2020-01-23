@@ -95,6 +95,9 @@ Cases Checker
 	[5, 1, 2, 3, 4]
 	>>> my_list.print_sorted()
 	[1, 2, 3, 4, 5]
+	>>> my_list
+	[5, 1, 2, 3, 4]
+
 
 New list
 
