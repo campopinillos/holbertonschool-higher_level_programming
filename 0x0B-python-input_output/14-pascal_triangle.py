@@ -5,11 +5,11 @@ def pascal_triangle(n):
     """
     pascal_list = [[1]] if n > 0 else []
     for i in range(1, n):
-        row = list(range(i + 1))
+        row = []
         for j in range(i + 1):
             if (j == 0 or j == i):
-                row[j] = 1
+                row.append(1)
             else:
-                row[j] = pascal_list[i - 1][j - 1] + pascal_list[i - 1][j]
+                row.append(pascal_list[i - 1][j - 1] + pascal_list[i - 1][j])
         pascal_list.append(row)
     return pascal_list
