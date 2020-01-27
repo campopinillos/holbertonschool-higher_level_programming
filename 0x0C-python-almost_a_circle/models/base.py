@@ -31,7 +31,7 @@ class Base:
         file = "{}.json".format(cls.__name__)
         list_str = []
         if list_objs is not None:
-            list_str = [l.to_dictionary() for l in list_objs]
+            list_str = [l.to_dictionary()for l in list_objs]
         with open(file, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_str))
 
@@ -58,7 +58,7 @@ class Base:
         l_d = []
         if os.path.exists(file):
             with open(file, mode='r', encoding='utf-8') as f:
-                l_d = [cls.create(**d) for d in cls.from_json_string(f.read())]
+                l_d = [cls.create(**d)for d in cls.from_json_string(f.read())]
         return l_d
 
     @classmethod
@@ -71,7 +71,7 @@ class Base:
             fieldnames = ['id', 'size', 'x', 'y']
         with open(f, mode='w', newline='') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-            [writer.writerow(obj.to_dictionary()) for obj in list_objs]
+            [writer.writerow(obj.to_dictionary())for obj in list_objs]
 
     @classmethod
     def load_from_file_csv(cls):
@@ -86,5 +86,5 @@ class Base:
                 list_dict = csv.DictReader(csvfile, fieldnames=fieldnames)
                 list_dict = [dict([k, int(v)]for k, v in obj.items())
                              for obj in list_dict]
-                list_dict = [cls.create(**dict) for dict in list_dict]
+                list_dict = [cls.create(**dict)for dict in list_dict]
         return list_dict
