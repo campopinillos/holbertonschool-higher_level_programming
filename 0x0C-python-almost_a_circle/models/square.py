@@ -41,11 +41,9 @@ class Square(Rectangle):
 
     def to_dictionary(self):
         """to_dictionary method"""
-        dic = {}
-        i = 0
-        att_list = ['id', 'size', 'size', 'x', 'y']
-        for k, v in self.__dict__.items():
-            if hasattr(self, k):
-                dic.update({att_list[i]: v})
-            i += 1
+        dic = {"id": self.id,
+               "width": self.width,
+               "height": self.height,
+               "x": self.x,
+               "y": self.y, }
         return dic
