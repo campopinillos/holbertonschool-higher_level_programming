@@ -5,6 +5,7 @@ Base Model
 """
 import json
 import os
+import csv
 
 
 class Base:
@@ -27,10 +28,11 @@ class Base:
 
     @classmethod
     def save_to_file(cls, list_objs):
+        file = "{}.json".format(cls.__name__)
         list_str = []
         if list_objs is not None:
             list_str = [l.to_dictionary() for l in list_objs]
-        with open("{}.json".format(cls.__name__), "w", encoding="utf-8") as f:
+        with open(file, mode="w", encoding="utf-8") as f:
             f.write(cls.to_json_string(list_str))
 
     @staticmethod
@@ -55,6 +57,34 @@ class Base:
         file = "{}.json".format(cls.__name__)
         l_d = []
         if os.path.exists(file):
-            with open(file, 'r') as f:
+            with open(file, mode='r', encoding='utf-8') as f:
                 l_d = [cls.create(**d) for d in cls.from_json_string(f.read())]
         return l_d
+
+    @classmethod
+    def save_to_file_csv(cls, list_objs):
+        f = "{}.csv".format(cls.__name__)
+        list_dict = []
+        if cls.__name__ == "Rectangle":
+            fieldnames = ['id', 'width', 'height', 'x', 'y']
+        elif cls.__name__ == "Square":
+            fieldnames = ['id', 'size', 'x', 'y']
+        with open(f, mode='w', newline='') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            [writer.writerow(obj.to_dictionary()) for obj in list_objs]
+
+    @classmethod
+    def load_from_file_csv(cls):
+        f = "{}.csv".format(cls.__name__)
+        list_dict = []
+        if os.path.exists(f):
+            if cls.__name__ == "Rectangle":
+                fieldnames = ['id', 'width', 'height', 'x', 'y']
+            elif cls.__name__ == "Square":
+                fieldnames = ['id', 'size', 'x', 'y']
+            with open(f, newline='') as csvfile:
+                list_dict = csv.DictReader(csvfile, fieldnames=fieldnames)
+                list_dict = [dict([k, int(v)]for k, v in obj.items())
+                             for obj in list_dict]
+                list_dict = [cls.create(**dict) for dict in list_dict]
+        return list_dict
