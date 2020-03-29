@@ -7,5 +7,5 @@ if __name__ == "__main__":
     c = db.cursor()
     c.execute("SELECT * FROM states ORDER BY id")
     [print(state) for state in c.fetchall()]
-    cur.close()
+    c.close()
     db.close()
