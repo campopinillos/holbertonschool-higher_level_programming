@@ -14,10 +14,10 @@ def find_peak(list_of_integers):
 def findPeak(array, lenght, low, high):
     """ Auxiliar function to find a peak """
     middle = int(low + (high - low)/2)
-    if (array[middle - 1] <= array[middle] and
+    if ((middle == 0 or array[middle - 1] <= array[middle]) and
        (middle == lenght - 1 or array[middle + 1] <= array[middle])):
-        return middle
-    elif (middle > 0 and array[middle - 1] > array[middle]):
-        return findPeak(array, low, (middle - 1), lenght)
+        return array[middle]
+    elif (middle >= 0 and array[middle + 1] > array[middle]):
+        return findPeak(array, lenght, (middle + 1), high)
     else:
-        return findPeak(array, (middle + 1), high, lenght)
+        return findPeak(array, lenght, low, (middle - 1))
