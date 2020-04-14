@@ -1,8 +1,7 @@
 #!/usr/bin/python3
-"""Write a Python script that takes in a URL,
-sends a request to the URL and displays the
-value of the variable X-Request-Id in the
-response header"""
+"""Python script that takes in a URL and an email address,
+sends a POST request to the passed URL with the email as a
+parameter"""
 
 if __name__ == '__main__':
     import requests
