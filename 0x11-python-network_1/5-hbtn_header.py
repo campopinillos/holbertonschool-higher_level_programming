@@ -6,5 +6,5 @@ response header"""
 
 if __name__ == '__main__':
     import requests
-    request = requests.get('https://intranet.hbtn.io/status')
+    request = requests.get(sys.argv[1])
     print(request.headers.get('X-Request-Id'))
