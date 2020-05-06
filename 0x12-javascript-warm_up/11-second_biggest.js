@@ -1,11 +1,9 @@
 #!/usr/bin/node
 const arrayIni = process.argv;
-arrayIni.splice(0, 2);
-if (Number(arrayIni.length) < 3) {
+
+if (arrayIni.length <= 3) {
   console.log(0);
 } else {
-  const arrayNum = arrayIni.map(Number);
-  const index = arrayNum.indexOf(Math.max(...arrayNum));
-  arrayNum.splice(index);
-  console.log(Math.max(...arrayNum));
+  arrayIni.splice(0, 2).sort(function (a, b) { return b - a; });
+  console.log(Number(arrayIni[1]));
 }
