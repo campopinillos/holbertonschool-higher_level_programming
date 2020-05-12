@@ -8,5 +8,4 @@ for (const [key, value] of Object.entries(dict)) {
     newDict[value] = [key];
   }
 }
-console.log(dict);
 console.log(newDict);
