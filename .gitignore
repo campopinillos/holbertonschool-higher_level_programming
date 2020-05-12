@@ -77,3 +77,6 @@ __pycache__
 .idea/vcs.xml
 .idea/inspectionProfiles/profiles_settings.xml
 *main.js
+0x13-javascript_objects_scopes_closures/fileA
+0x13-javascript_objects_scopes_closures/fileB
+0x13-javascript_objects_scopes_closures/fileC
