@@ -2,4 +2,5 @@
 const request = require('request');
 const fs = require('fs');
 const url = process.argv[2];
-request(url).pipe(fs.WriteStream(process.argv[3], 'utf-8'));
+const file = process.argv[3];
+request(url).pipe(fs.createWriteStream(file));
