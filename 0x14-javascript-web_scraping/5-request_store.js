@@ -1,6 +1,12 @@
 #!/usr/bin/node
 const request = require('request');
 const fs = require('fs');
-request(process.argv[2]).pipe(fs.writeFile(process.argv[3], 'utf-8', err => {
-  if (err) console.log(err);
-}));
+const url = process.argv[2];
+
+request(url, (error, response, body) => {
+  if (response) {
+    fs.writeFileSync(process.argv[3], body, 'utf-8');
+  } else {
+    console.log(error);
+  }
+});
