@@ -9,8 +9,7 @@ request(url, (error, response, content) => {
       const character = people[i];
       request(character, (error, response, content) => {
         if (!error) {
-          const names = JSON.parse(content);
-          orderDict[character.split('/')[5]] = names.name;
+          orderDict[character.split('/')[5]] = JSON.parse(content).name;
           if (Object.entries(orderDict).length === people.length) {
             for (const key in orderDict) {
               console.log(orderDict[key]);
